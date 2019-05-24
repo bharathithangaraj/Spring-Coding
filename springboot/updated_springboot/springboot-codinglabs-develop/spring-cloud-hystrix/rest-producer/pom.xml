@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.unimoni.spring.cloud</groupId>
+    <artifactId>rest-producer</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>rest-producer</name>
+
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.1.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring-boot-starter-web.version}</version>
+        </dependency>
+    </dependencies>
+
+    <properties>
+        <spring-session.version>1.2.2.RELEASE</spring-session.version>
+        <spring-cloud-dependencies.version>Brixton.SR7</spring-cloud-dependencies.version>
+        <spring-cloud-starter-config.version>1.2.2.RELEASE</spring-cloud-starter-config.version>
+        <spring-cloud-config-server.version>1.2.2.RELEASE</spring-cloud-config-server.version>
+        <spring-cloud-starter-eureka.version>1.2.3.RELEASE</spring-cloud-starter-eureka.version>
+        <spring-cloud-starter-feign.version>1.2.3.RELEASE</spring-cloud-starter-feign.version>
+        <spring-cloud-starter-hystrix.version>1.2.3.RELEASE</spring-cloud-starter-hystrix.version>
+        <spring-cloud-stream.version>1.3.0.RELEASE</spring-cloud-stream.version>
+        <spring-boot-starter-web.version>1.4.2.RELEASE</spring-boot-starter-web.version>
+        <spring-boot-maven-plugin.version>1.4.2.RELEASE</spring-boot-maven-plugin.version>
+        <spring-cloud-starter-zuul.version>1.2.3.RELEASE</spring-cloud-starter-zuul.version>
+        <rest-producer.version>1.0.0-SNAPSHOT</rest-producer.version>
+    </properties>
+
+
+</project>

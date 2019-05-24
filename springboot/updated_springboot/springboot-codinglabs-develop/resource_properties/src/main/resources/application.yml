@@ -1,0 +1,7 @@
+company:
+      siteUrl: www.wavelabs.in
+      type: software
+Employee:
+      role: fulltime
+      tech: java
+            

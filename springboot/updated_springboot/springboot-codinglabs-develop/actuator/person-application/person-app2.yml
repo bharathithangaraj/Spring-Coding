@@ -1,0 +1,35 @@
+global:
+  scrape_interval:   15s # By default, scrape targets every 15 seconds.
+
+  # Attach these labels to any time series or alerts when communicating with
+  # external systems (federation, remote storage, Alertmanager).
+  external_labels:
+    monitor: 'person-application'
+
+scrape_configs:
+- job_name:       'person-application'
+  # Override the global default and scrape targets from this job every 1 seconds.
+  scrape_interval: 1s
+  metrics_path: '/actuator/prometheus'
+
+  static_configs:
+  - targets: ['192.168.1.7:9000']  # change is IP address of application exposing /actuator/prometheus
+    labels:
+      application: 'person-application'
+      
+
+- job_name:       'zipkin-server-main'
+  # Override the global default and scrape targets from this job every 1 seconds.
+  scrape_interval: 1s
+  metrics_path: '/actuator/prometheus'
+
+  static_configs:
+  - targets: ['192.168.1.7:9099']  # change is IP address of application exposing /actuator/prometheus
+    labels:
+      application: 'zipkin-server-main'      
+      
+
+- job_name: 'prometheus'
+  scrape_interval: 1s
+  static_configs:
+  - targets: ['192.168.1.7:19090']  # ip address is localhost as the this config is used by prometheus docker which is local

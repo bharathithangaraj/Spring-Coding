@@ -1,0 +1,42 @@
+<beans:beans
+	xmlns="http://www.springframework.org/schema/batch"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/batch
+           http://www.springframework.org/schema/batch/spring-batch-3.0.xsd">
+
+	<job id="job">
+		<step id="step1" next="decision">
+			<tasklet ref="taskletStep_1" />
+		</step>
+
+		<decision id="decision" decider="decider">
+
+			<next on="*" to="step2" />
+			<next on="FAILED" to="step3" />
+			<!-- <next on="FAILED" to="step2" /> <next on="COMPLETED" to="step3" /> -->
+		</decision>
+
+		<step id="step2" next="step3">
+			<tasklet ref="taskletStep_2" />
+		</step>
+
+		<step id="step3">
+			<tasklet ref="taskletStep_3" />
+		</step>
+	</job>
+
+	<beans:bean id="taskletStep_1"
+		class="com.wavelabs.programatic.flow.Step1" />
+	<beans:bean id="taskletStep_2"
+		class="com.wavelabs.programatic.flow.Step2" />
+	<beans:bean id="taskletStep_3"
+		class="com.wavelabs.programatic.flow.Step3" />
+
+	<beans:bean id="decider"
+		class="com.wavelabs.programatic.flow.FlowDecision" />
+
+</beans:beans>

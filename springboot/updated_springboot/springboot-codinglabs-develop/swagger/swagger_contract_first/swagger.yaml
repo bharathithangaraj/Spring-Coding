@@ -1,0 +1,39 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Echo
+  description: demo
+tags: 
+  - name: student
+paths:
+  /student:
+    get:
+      summary: summary
+      description: desc
+      responses:
+        200:
+          description: OK
+    post:
+      summary: summary
+      description: desc
+      parameters: 
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/Student'
+      responses:
+        200:
+          description: OK
+          
+    
+    
+definitions:
+  Student:
+    type: object
+    properties:
+      id: 
+        type: integer
+        format: int64
+      role:
+        type: string

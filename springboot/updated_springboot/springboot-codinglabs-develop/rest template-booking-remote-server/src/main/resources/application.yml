@@ -1,0 +1,13 @@
+server:
+  port: 5002
+  address: 10.9.15.255
+spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/a?useSSL=false
+    username: root
+    password: radha123
+  jpa:
+    hibernate.ddl-auto: update
+    show-sql: true
+    generate-ddl: true

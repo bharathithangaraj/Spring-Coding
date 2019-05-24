@@ -1,0 +1,111 @@
+******** Docker basic commands *************
+1) docker pull {image-name} (pull the docker image)
+2) docker run -p 8080:8080 {image-name} (start the docker container on 8080 port number)
+3) docker images (gives list of docker images)
+4) docker ps (gives current running docker containers)
+5) docker stop {instance-id} (stops the docker container)
+6) docker start {instance-id} (starts the docker container with given id)
+7) docker restart {instance-id} (restarts the docker container)
+8) docker logs -f {container-id} (gives the logs of container)
+9) docker exec -it {container-id} /bin/bash (login to the docker container)
+10) docker rm {container-id} (removes the docker container)
+11) docker rmi {image-name} (removes the docker image)
+12) docker inspect {container-id} (gives the docker container detains)
+13) docker run -p 8080:8080 -d {image-name} (running the docker container on background)
+
+
+************ Docker volume commands *****************
+
+1) docker volume ls (provides the list of volumes avalible)
+2) docker volume create {volume-name} (creates the volume)
+3) docker inspect {volume-name} (Gives the volume details)
+4) docker run --name myJenkins1 -v {volume-name}:{path of data we want to save container location} -p 8080:8080  {image-name} (attaching volumes to container)
+
+
+************ Dockerize spring-boot app without database ***************
+
+Sample Dockerfile: 
+
+		FROM java:8
+		COPY target/limit-service.jar limit-service.jar
+		CMD ["java","-jar","limit-service.jar"]
+
+		(note: in the above file limit-service is jar name. You need to change it to your jar name)
+
+Steps to build docker image and run container: 
+
+		1)  cd {project_location}
+		2) 	mvn install
+		3) docker build -t {you can specify name you want here for image} .
+		4) docker run -p 8081:8080 -d {image-name}
+		(note: right side 8080 is where application start in docker container and from left side port you can access application )
+
+
+*********** Dockerize sample node-js app ****************************
+
+Sample Dockerfile: 
+
+	FROM node:8
+	WORKDIR /app
+	COPY package.json  /app/
+	RUN npm install
+	COPY . /app
+	RUN npm run build
+	CMD ["npm", "start"]
+	
+
+	1) cd {project-location}
+	2) docker build -t {image-name} .
+	3) docer run -p 4200:4200 -d {image-name}
+
+*********** Wiriting simple docker-compose file **************************
+
+	Dockerfile internally uses the Dockerfile to build the image to service. 
+
+	version: '2.1'
+
+services:
+    limit-service:
+      build: .
+      ports:
+       - "8080:8080"
+      depends_on:
+       - mysql
+        
+    mysql:
+      image: mysql
+      ports:
+       - "3306:3306"
+      environment:
+        MYSQL_DATABASE: test
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_ROOT_HOST: 'localhost'
+        DATABASE_USER: root
+
+  notes: 
+  	1) in the above file "limit-service" and "mysql" are service names
+  	2) limit-service internally uses Dockerfile to buld the project
+  	3) mysql using image
+
+  	commands : 
+  		1) docker-compose build
+  		2) docker-compose up -d 
+
+
+********************* pusing the docker image to hub *********************************
+
+docker login (it promotps for user name password)
+
+docker tag limit-service gopuni/limit-service:latest 
+
+(notes : in the above command gopuni is my username, we need to tag image with user-name)
+
+docker push gopuni/limit-service:latest
+
+*******************************************************************************
+
+
+
+
+
+

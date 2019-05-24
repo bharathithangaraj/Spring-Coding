@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.jackrutorial</groupId>
+    <artifactId>Spring-Batch</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>SpringBatchDatabaseToCsv</name>
+    <description>Demo project for Spring Boot</description>
+
+    <modules>
+        <module>Programmatic-Flow-Decision</module>
+        <module>spring-batch-controlling-step-flow</module>
+        <module>spring-batch-demo</module>
+        <module>spring-batch-multithreading-example</module>
+        <module>spring-batch-retrytemplate-example-master</module>
+        <module>SpringBatch-quartz-scheduling</module>
+        <module>SpringBatch-Quartz-Scheduling-with-out-conifg</module>
+        <module>SpringBatch-QuartzScheduling-without-config</module>
+        <module>springbatchparallel</module>
+        <module>Springboot-DB-CSV</module>
+        <module>spring-batch-remote-chunk-sample</module>
+        <module>spring-batch-remote-chunk-sample</module>
+        <module>tasklets</module>
+    </modules>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+
+</project>
